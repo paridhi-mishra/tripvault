@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
+const tripRoutes = require('./routes/trips');
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 
 app.get('/', (req, res) => res.json({ message: 'TripVault API is running' }));
 app.use('/api/auth', authRoutes);
+app.use('/api/trips', tripRoutes);
 
 // 404 handler
 app.use((req, res) => res.status(404).json({ message: 'Route not found' }));
